@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GO trip to Wayand</title>
+  <style>
+    body {
+      opacity: 0.8;
+      background-image: url("{% static 'images/chembra.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 160px;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2em;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 1.5em;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 0.8em;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkbox-group label {
+      font-weight: normal;
+      margin-bottom: 0.3em;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8em;
+      background: #1e88e5;
+      border: none;
+      color: #fff;
+      font-size: 1.2em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #1565c0;
+    }
+
+    .total-cost {
+      margin-top: 1em;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function calculateCost() {
+      const members = document.getElementById("members").value;
+      const costPerPerson = 2000;  // Example rate per person
+      const totalCost = members * costPerPerson;
+      document.getElementById("total-cost").textContent = `Total Cost: ₹${totalCost}`;
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>GO trip to Wayand</h2>
+    <form method="post" action="{% url 'payment1' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Trip Date</label>
+        <input type="date" id="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="members">Number of Members</label>
+        <input type="number" id="members" min="1" placeholder="Enter number of members" required
+          onchange="calculateCost()">
+      </div>
+      <div class="form-group">
+        <label>Places to Visit</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="places" value="Chembra Peak"> Chembra Peak</label>
+          <label><input type="checkbox" name="places" value="Meenmutty"> Meenmutty</label>
+          <label><input type="checkbox" name="places" value="Wayanad Wildlife Sanctuary"> Wayanad Wildlife
+            Sanctuary</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Choose Resort</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="resort" value="Lakerose Resort"> Lakerose Resort</label>
+          <label><input type="checkbox" name="resort" value="Petals Resort"> Petals Resort</label>
+          <label><input type="checkbox" name="resort" value="Woodrose Resort"> Woodrose Resort</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Food Spot</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="food" value="Moorikkappu Homely Food"> Moorikkappu Homely Food</label>
+          <label><input type="checkbox" name="food" value="Jubilee Restaurant"> Jubilee Restaurant</label>
+          <label><input type="checkbox" name="food" value="Wilton Restaurant"> Wilton Restaurant</label>
+        </div>
+      </div>
+
+      <div class="total-cost" id="total-cost">Total Cost: ₹0</div>
+
+     <a href="{% url 'payment1' %}"><button type="submit">Book Now</button></a>
+    </form>
+  </div>
+</body>
+</html>

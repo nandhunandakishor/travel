@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Trip - Discover Nature</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+<style>
+    /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero .content {
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: scale(1.1);
+}
+
+/* Features Section */
+.features {
+    padding: 50px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+/* Testimonials */
+.testimonials {
+    background: #fff;
+    padding: 50px 20px;
+}
+
+.swiper-container {
+    width: 80%;
+    margin: auto;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Call to Action */
+.cta {
+    padding: 40px;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6f61, #ff9061);
+    color: white;
+}
+
+.cta .cta-btn {
+    background: #fff;
+    color: #ff6f61;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+
+footer .social-icons img {
+    width: 30px;
+    margin: 0 10px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff6f61;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+.back-to-top:hover {
+    background: #ff9061;
+}
+
+</style>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <video autoplay muted loop class="background-video">
+            <source src="{% static 'videos/wayanad.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        <div class="content" data-aos="fade-up">
+            <h1>Go Trip</h1>
+            <p>Embark on a journey to remember</p>
+            <a href="{% url 'login1' %}" class="btn">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 data-aos="fade-right">Why Travel with Us?</h2>
+        <div class="feature-cards">
+            <div class="card" data-aos="zoom-in">
+                <img src="{% static 'images/booking.png' %}" alt="Easy Booking">
+                <h3>Seamless Booking</h3>
+                <p>Book trips easily with zero hassle.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{% static 'images/welcome.jpg' %}" alt="Exclusive Deals">
+                <h3>Best Deals</h3>
+                <p>Enjoy exclusive discounts and offers.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                <img src="{% static 'images/itinerary.png' %}" alt="Custom Itineraries">
+                <h3>Tailored Trips</h3>
+                <p>Design your trips just the way you want.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" data-aos="fade-up">
+        <h2>Traveler Stories</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p>"Our Wayanad trip was magical. Thanks to Go Trip!"</p>
+                    <span>– Ramesh P.</span>
+                </div>
+                <div class="swiper-slide">
+                    <p>"A seamless booking experience and perfect itinerary."</p>
+                    <span>– Anita D.</span>
+                </div>
+                <div class="swiper-slide">
+                    <p>"Highly recommended for all travel enthusiasts!"</p>
+                    <span>– John K.</span>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" data-aos="zoom-in">
+        <h2>Ready to Explore?</h2>
+        <a href="{% url 'register1' %}" class="cta-btn">Start Your Journey</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'images/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'images/twitter.png' %}" alt="Twitter"></a>
+        </div>
+        <a href="#top" class="back-to-top">↑</a>
+    </footer>
+
+    <script>
+        AOS.init();  // Initialize AOS animations
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

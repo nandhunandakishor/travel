@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Trip to Calicut</title>
+    <style>
+        body {
+            background-image: url("{% static 'images/bg4.jpg' %}");
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .print-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px; /* Space between buttons */
+        }
+        .print-btn:hover {
+            background-color: #007B9E;
+        }
+        .amount {
+            font-weight: bold;
+            color: #333;
+            margin-top: 15px;
+        }
+        /* Print styles */
+        @media print {
+            body {
+                background-image: none; /* Remove background image for print */
+                background-color: #fff; /* Set background to white for print */
+            }
+            .container {
+                box-shadow: none; /* Remove shadow for print */
+                padding: 20px; /* Adjust padding */
+                margin: 0; /* Remove margin */
+                border-radius: 0; /* Remove border radius */
+            }
+            h1 {
+                font-size: 24px; /* Increase font size for print */
+            }
+            .submit-btn, .print-btn {
+                display: none; /* Hide buttons on print */
+            }
+            .amount {
+                margin-top: 20px; /* Adjust amount spacing */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Book a Trip to Calicut</h1>
+    <form method="submit-booking" action="{% url 'payment1' %}">
+        {% csrf_token %}
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="cname" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="cemail" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="cphone" required>
+
+        <label for="trip-date">Trip Date</label>
+        <input type="date" id="trip-date" name="ctrip-date" required>
+
+        <label for="num-travelers">Number of Travelers</label>
+        <select id="num-travelers" name="cnum-travelers" required onchange="calculateAmount()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="message">Additional Requirements</label>
+        <textarea id="message" name="cspecial" rows="4" placeholder="Any special requests?"></textarea>
+
+        Total Amount: $<input type="text" id="total-amount" readonly>
+        <button type="submit" class="submit-btn">Book Now</button>
+        <button type="button" class="print-btn" onclick="window.print()">Print Trip Details</button>
+    </form>
+    {{key}}
+</div>
+
+<script>
+    function calculateAmount() {
+        const pricePerPerson = 1000; // Set price per traveler
+        const numTravelers = document.getElementById('num-travelers').value;
+        const totalAmount = pricePerPerson * numTravelers;
+        document.getElementById('total-amount').value = totalAmount;
+    }
+</script>
+
+</body>
+</html>

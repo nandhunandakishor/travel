@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO trip to Munnar</title>
+    <style>
+        body {
+            opacity: 0.8;
+            background-image: url("{% static 'images/munnar.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            
+            background-color: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .total-amount {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        const costPerPerson = 1000; // Set a fixed cost per person
+
+        function calculateTotal() {
+            const numberOfPeople = document.getElementById("number_of_people").value;
+            const totalAmount = numberOfPeople * costPerPerson;
+
+            document.getElementById("total_amount").innerText = "Total Amount: ₹" + totalAmount;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>GO trip to Munnar</h1>
+    <form method="post" action="{% url 'payment1' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="trip_date">Trip Date:</label>
+        <input type="date" id="trip_date" name="trip_date" required>
+
+        <label>Select Places to Visit:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="places[]" value="Tea Museum"> Tea Museum</label>
+            <label><input type="checkbox" name="places[]" value="Eravikulam National Park"> Eravikulam National
+                Park</label>
+            <label><input type="checkbox" name="places[]" value="Anamudi"> Anamudi</label>
+        </div>
+
+        <label for="resorts">Choose a Resort:</label>
+        <select id="resorts" name="resort" required>
+            <option value="Scenic">Scenic</option>
+            <option value="Munnar - IHCL SeleQtions">Munnar - IHCL SeleQtions</option>
+            <option value="The Valle Munnar">The Valle Munnar</option>
+            <option value="Munnar Tea Hills Resort">Munnar Tea Hills Resort</option>
+        </select>
+
+        <label>Select Food Spots:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="food_spots[]" value="Saravana Bhavan"> Saravana Bhavan</label>
+            <label><input type="checkbox" name="food_spots[]" value="Rapsy Restaurant"> Rapsy Restaurant</label>
+            <label><input type="checkbox" name="food_spots[]" value="Tea Tales Cafe"> Tea Tales Cafe</label>
+        </div>
+
+        <label for="number_of_people">Number of People:</label>
+        <input type="number" id="number_of_people" name="number_of_people" min="1" required oninput="calculateTotal()">
+
+        <div class="total-amount" id="total_amount">Total Amount: ₹0</div>
+
+        <input type="submit" value="Book Now">
+    </form>
+
+</body>
+
+</html>

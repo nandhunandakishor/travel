@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Page</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Your form fields go here -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

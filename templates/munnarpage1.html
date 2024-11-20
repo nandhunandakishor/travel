@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places & Food</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/munnar1.png' %}");
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        h1,
+        h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .card {
+            text-decoration: none;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-img-top {
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav .navbar-brand {
+            color: white;
+        }
+
+        nav a:hover {
+            color: #FFD700 !important;
+        }
+
+        /* Scroll containers for Places and Food */
+        .scroll-container {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 5px;
+        }
+
+        .scroll-container a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Media Queries for better responsiveness */
+        @media (max-width: 768px) {
+            h1,
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                margin: 10px;
+                width: 16rem;
+            }
+
+            .card-img-top {
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1,
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                width: 14rem;
+            }
+
+            .card-img-top {
+                height: 100px;
+            }
+        }
+        .bookbutton {
+            background-color: #FFD700;
+            /* Gold color */
+            color: #000;
+            /* Black text */
+            border-radius: 10px;
+            /* Rounded corners */
+            padding: 10px 20px;
+            /* Padding for the button */
+            text-decoration: none;
+            /* Remove underline */
+            transition: background-color 0.3s ease;
+            /* Smooth transition */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Go Trip</a>
+            <a class="bookbutton" href="{% url 'bookmunnar' %}">Book now</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Places</h1>
+        <div class="scroll-container">
+            <div class="card" style="width: 18rem;">
+                <a href="https://kdhptea.com/">
+                    <img src="{% static 'images/museum.jpg' %}" class="card-img-top" alt="Tea Museum">
+                    <div class="card-body">
+                        <h5 class="card-title">Tea Museum</h5>
+                        <p class="card-text">Address: KDHP House, NH 49, Nullatanni, Munnar, Kerala 685612</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <a href="https://www.eravikulamnationalpark.in/landing/index.php">
+                    <img src="{% static 'images/kurunji.jpg' %}" class="card-img-top" alt="Eravikulam National Park">
+                    <div class="card-body">
+                        <h5 class="card-title">Eravikulam National Park</h5>
+                        <p class="card-text">Address: Kannan Devan Hills, Kerala</p>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <a href="{% url 'anaimudi' %}">
+                    <img src="{% static 'images/Anaimudi.jpg' %}" class="card-img-top" alt="Anamudi Peak">
+                    <div class="card-body">
+                        <h5 class="card-title">Anamudi</h5>
+                        <p class="card-text"> Address:Ernakulam district and Idukki district, Kerala, India</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <h2>Top Resorts</h2>
+        <div class="scroll-container">
+            <a href="https://www.seleqtionshotels.com/en-in/scenic-munnar/">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/scenic.jpeg' %}" class="card-img-top" alt="Scenic Resort">
+                    <div class="card-body">
+                        <h5 class="card-title">Scenic, Munnar - IHCL SeleQtions</h5>
+                        <p class="card-text">Address: Eitty City, Chithirapuram (P.O, Anachal, Munnar, Kerala 685565</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://kondodyhotels.com/the-valle-resort-munnar.html">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/valleresort.jpg' %}" class="card-img-top" alt="Valle Resort">
+                    <div class="card-body">
+                        <h5 class="card-title">The Valle Munnar</h5>
+                        <p class="card-text">Address: KSEB Tunnel Road, Pallivasal, Munnar, Kerala 685612</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://munnarteahills.com/">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/teahillresort.jpg' %}" class="card-img-top" alt="Tea Hills Resort">
+                    <div class="card-body">
+                        <h5 class="card-title">Munnar Tea Hills Resort</h5>
+                        <p class="card-text">Address: P.B.No 3, Thattathi Muku Chithirapuram P. O, Kerala 685565</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <h2>Food</h2>
+        <div class="scroll-container">
+            <a href="https://saravanabhavan.com/">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/saravana.jpg' %}" class="card-img-top" alt="Saravana Bhavan Restaurant">
+                    <div class="card-body">
+                        <h5 class="card-title">Saravana Bhavan</h5>
+                        <p class="card-text">Address:Market, MG Rd, Nullatanni, Munnar,Kannan Devan Hills, Kerala 685612</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.munnarinfo.in/2117/3343/where-to-buy-/rapsy-restaurant--munnar-">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/Rapsy.jpg' %}" class="card-img-top" alt="Rapsy Restaurant">
+                    <div class="card-body">
+                        <h5 class="card-title">Rapsy Restaurant Munnar</h5>
+                        <p class="card-text">Address: Main Bazaar, SH17, Munnar, Kerala 685612</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tripadvisor.in/Restaurant_Review-g303881-d16721979-Reviews-Tea_Tales_Cafe-Munnar_Idukki_District_Kerala.html">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/cake.jpg' %}" class="card-img-top" alt="Tea Tales Cafe">
+                    <div class="card-body">
+                        <h5 class="card-title">Tea Tales Cafe</h5>
+                        <p class="card-text">Address: 1st floor, Kalnivas complex, Munnar, Kerala 685612</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3oBSz2EeT5G5rVRpCpSvvF5swflk" crossorigin="anonymous"></script>
+</body>
+
+</html>

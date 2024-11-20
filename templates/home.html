@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Trip</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff; /* Change text color to white for better contrast */
+    }
+
+    .front-1 {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-image: url("{% static 'images/front1.png' %}");
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      padding: 20px;
+      transition: background-color 0.5s ease; /* Smooth transition */
+    }
+
+    .front-1 h1 {
+      font-size: 3rem; /* Increased font size for the heading */
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel {
+      margin-top: 50px;
+      padding-top: 10px;
+      overflow: hidden;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 33.333%;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 300px;
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Add box-shadow transition */
+    }
+
+    .card:hover {
+      transform: translateY(-10px); /* Lift effect on hover */
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0; /* Rounded corners for images */
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      background: rgba(0, 0, 0, 0.8); /* Darker background for better readability */
+      color: #fff;
+      border-radius: 5px;
+      font-size: 0.75em;
+      text-transform: uppercase;
+      transition: background 0.3s ease; /* Smooth transition */
+    }
+
+    .card-tag.history {
+      background: #e67e22; /* History color */
+    }
+
+    .card-tag.mayans {
+      background: #3498db; /* Wayanad color */
+    }
+
+    .card-tag.domestic {
+      background: #1abc9c; /* Munnar color */
+    }
+
+    .card-body {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 1.25rem; /* Increased card title size */
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem; /* Increased card text size */
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .explore-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Button transition */
+      font-weight: bold; /* Bold button text */
+    }
+
+    .explore-btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.05); /* Button scaling effect on hover */
+    }
+
+    footer {
+      margin-top: 30px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: text-decoration 0.3s ease; /* Added transition for hover effect */
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      font-size: 14px;
+    }
+    
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">GO TRIP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'welcome' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Packages
+            </a> -->
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'familypackage' %}">Family Packages</a></li>
+              <li><a class="dropdown-item" href="{% url 'bachelorpackage' %}">Bachelor Packages</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">More</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="front-1">
+    <h1>Welcome To GO Trip !!!</h1>
+  </div>
+
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="card">
+          <div class="card-tag history">Kozhikode</div>
+          <img src="{% static 'images/calicut.jpeg' %}" alt="Kozhikode Beach">
+          <div class="card-body">
+            <h3>Sunsets and Sea Breeze at Kozhikode Beach</h3>
+            <p>Kozhikode Beach</p>
+            <a href="{% url 'kozhikode1' %}">
+              <button class="btn btn-primary explore-btn">Explore</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card">
+          <div class="card-tag mayans">Wayanad</div>
+          <img src="{% static 'images/forest.jpg' %}" alt="Wayanad Wildlife Sanctuary">
+          <div class="card-body">
+            <h3>Discovering the Wild Wonders of Wayanad</h3>
+            <p>Muthanga, Wayanad</p>
+            <a href="{% url 'wayanad1' %}">
+              <button class="btn btn-primary explore-btn">Explore</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="card">
+          <div class="card-tag domestic">Munnar</div>
+          <img src="{% static 'images/munnar.jpg' %}" alt="Munnar">
+          <div class="card-body">
+            <h3>Green Carpets as Far as the Eye Can See</h3>
+            <p>Munnar, Idukki</p>
+            <a href="{% url 'munnar1' %}">
+              <button class="btn btn-primary explore-btn">Explore</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Go Trip</h3>
+      <p>Discover the beauty of nature and beyond!</p>
+    </div>
+    <div class="footer-links">
+      <a href="{% url 'welcome' %}">Home</a>
+      <a href="{% url 'about' %}">About Us</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Go Trip. All rights reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarovaram Bio Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/sarovaram.jpeg' %}");
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure the header stays on top */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            margin: 100px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff7f50; /* Coral color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Added margin for spacing */
+        }
+
+        button:hover {
+            background-color: #ff4500; /* Darker coral */
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Sarovaram Bio Park</h1>
+    </header>
+
+    <div class="content">
+        <p>The park is identified as one of the 27 wetlands of India and therefore requires great attention.
+            In these times, it has become crucial to adapt to eco-friendly ways of life. Preserving Nature and letting it flourish for the sake of present and future generations is of great importance. This is the mission that Sarovaram Bio Park has undertaken. Situated in Kozhikode district, Sarovaram Biopark primarily aims to conserve mangrove forests and wetlands.</p>
+
+        <p>Located near Kottooy, just adjacent to the Canoly Canal, it encompasses a protected area of nearly 200 acres. It is a safe haven for various species of plants, birds, and animals. Seven mangrove species and 29 related species thrive in the area. Thirty-four different varieties of bird species have been identified in the park. The flora and fauna of the park are diverse, and the whole locale is surrounded by lush greenery, which makes it an ideal picnic spot to relax.</p>
+
+        <p>Apart from being a blissful retreat, the park also offers various entertainment options such as boating, a canal walkway, a musical fountain, a butterfly park, an otter park, a bird sanctuary, floating rafts, a boardwalk, and an open-air theatre. It’s for sure going to be a day well spent at Sarovaram Bio Park.</p>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sarovaram Bio Park. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

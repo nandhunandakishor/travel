@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calicut Beach Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-image: url("/static/images/calicutbeach2.jpg");
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Overlay for better text visibility */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black with 50% opacity */
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: "Archivo Black", sans-serif;
+            font-size: 3em;
+            /* Increase heading size */
+            margin: 0.5em 0;
+            z-index: 2;
+        }
+
+        p {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.2em;
+            /* Change paragraph size */
+            margin: 1em 0;
+            line-height: 1.5;
+            /* Improve line spacing */
+            z-index: 2;
+        }
+
+        .button {
+            background-color: #f39c12;
+            /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            /* Animation on hover */
+            z-index: 2;
+            position: relative;
+        }
+
+        .button:hover {
+            background-color: #e67e22;
+            /* Darker shade on hover */
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1em;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div> <!-- Overlay for text readability -->
+    {% csrf_token %}
+    <div>
+        <h1>A Coastal Gem in Kerala</h1>
+        <p>Welcome to our Calicut Beach blog page, where we explore the enchanting beauty and vibrant culture of one of
+            Kerala's most beloved coastal destinations. Nestled along the Arabian Sea, Calicut Beach is a paradise for
+            nature lovers, adventure seekers, and anyone looking to relax by the waves.</p>
+        <p>Join us as we delve into the rich history of this picturesque beach, its stunning sunsets, and the iconic
+            lighthouse that stands as a sentinel over the shore. We’ll share tips on the best times to visit, must-try
+            local delicacies, and exciting activities like beach volleyball, kayaking, and fishing.</p>
+        <p>Whether you're planning your first visit or are a frequent traveler, our blog is your guide to uncovering the
+            hidden gems of Calicut Beach. Dive into our posts for travel itineraries, photography tips, and local
+            insights that will enhance your experience in this coastal haven.</p>
+        <p>Come, feel the sand between your toes and the cool sea breeze on your skin. Let’s explore Calicut Beach
+            together!</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

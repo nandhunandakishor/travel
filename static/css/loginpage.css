@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 350px;
+
+
+}
+
+.login {
+    width: 350px;
+    padding: 30px;
+    margin-left: 300px;
+    margin-top: 80px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    color: #ffffff;
+}
+
+.login:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); /* Enhance depth on hover */
+}
+
+input[type='text'],input[type='password']{
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+.button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #4caf50, #8bc34a); /* Gradient background */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}

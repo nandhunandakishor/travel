@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meenmutty Waterfall - Wayanad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/images/meenmutty.jpg');
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Add a dark overlay for readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* dark overlay */
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #ffcc00;
+        }
+
+        /* Add a button for interaction */
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+        
+        .btn:active {
+            background-color: #1e7e34;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>Meenmutty Waterfall</header>
+        <p><span class="highlight">Meenmutty Waterfall</span> is located in Padinjarathara, Wayanad District, Kerala.</p>
+        <p>It is the largest waterfall in Wayanad, cascading down in three tiers with a height of 1000 feet, located on the scenic Banasura Hills.</p>
+        <p>Accessible from Padinjarathara, this breathtaking waterfall becomes even more captivating amidst lush green tea plantations.</p>
+        <p>However, it can be dangerous during the rainy season due to high inflow, and caution is advised as there have been accidents since 1991.</p>
+        <p>For adventurous tourists, the hike through the green landscape to the falls is a memorable experience.</p>
+    </div>
+</body>
+</html>

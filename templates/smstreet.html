@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calicut Beach Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/smstreet.jpg' %}");
+            margin: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Overlay for better text visibility */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black with 50% opacity */
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: "Archivo Black", sans-serif;
+            font-size: 3em;
+            margin: 0.5em 0;
+            z-index: 2;
+            position: relative;
+        }
+
+        p {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.2em;
+            margin: 1em 0;
+            line-height: 1.5;
+            z-index: 2;
+            position: relative;
+        }
+
+        .button {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+            position: relative;
+        }
+
+        .button:hover {
+            background-color: #e67e22;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1em;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div> <!-- Overlay for text readability -->
+    {% csrf_token %}
+    <div>
+        <h1>The Heartbeat of Kozhikode’s Bustling Traditions</h1>
+        <p>S.M. Street, short for Sweetmeat Street, also known as Mittai Theruvu, is a bustling shopping street located
+            in Kozhikode, Kerala.
+        <p>This pedestrian-only street offers a unique mix of tradition and modernity, with a rich history and a
+            160-year-old fire temple amidst the shops.</p>
+        <p>The name derives from the time when the street was lined with sweetmeat and halvah stalls.
+        <p> Today, it's a vibrant shopping destination, attracting locals and tourists alike.</p>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Go Trip. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
